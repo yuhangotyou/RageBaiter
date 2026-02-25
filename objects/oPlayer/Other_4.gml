@@ -6,4 +6,3 @@
 	 y = ini_read_real("player", "y", y);
 	 ini_close();
  }
- show_debug_message(file_exists("saved_player_data.ini"));
