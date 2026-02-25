@@ -1,0 +1,1 @@
+oPlayer.sprite_index = sPlayerDisappear;
