@@ -4,6 +4,10 @@ if (animation_finished || sprite_index != sPlayerDisappear) {
 	is_on_rock = place_meeting(x, y+2, oRock);
 	is_sliding_left = place_meeting(x-1,y,oSolid) 
 	is_sliding_right = place_meeting(x+1,y,oSolid)
+	is_on_platform = place_meeting(x,y+2,oFallingPlatform)
+	if (is_on_platform) {
+		instanceFP = instance_place(x,y+2,oFallingPlatform);
+	}
 	
 	if (!is_on_rock) && !place_meeting(x,y+1,oFinish) && !place_meeting(x,y+1,oYouWin){
 		move_x = keyboard_check(vk_right) - keyboard_check(vk_left);
@@ -41,8 +45,7 @@ if (animation_finished || sprite_index != sPlayerDisappear) {
 		move_y += 1;
 	}
 
-	if (place_meeting(x,y+2,oFallingPlatform) && !oFallingPlatform.is_triggered) {
-		instanceFP = instance_place(x,y+2,oFallingPlatform);
+	if (place_meeting(x,y+2,oFallingPlatform) && !instanceFP.is_triggered) {
 		instanceFP.is_triggered = true;
 		instanceFP.alarm[0] = 60;
 	}
